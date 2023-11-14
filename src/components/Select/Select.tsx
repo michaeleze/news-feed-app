@@ -2,11 +2,13 @@
 import { SelectProps } from '@/types/index';
 
 const Select: React.FC<SelectProps> = ({
-  selectLabel,
-  name,
-  handleChange,
-  options,
-  selectedItem,
+  select: {
+    selectLabel,
+    name,
+    handleChange,
+    options,
+    selectedItem,
+  }
 }) => {
 
   return (

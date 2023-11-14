@@ -1,35 +1,41 @@
+export type ArticleFilterProps = {
+  datePicker:{
+    label: string;
+    handleDateChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    selectedDate: string;
+  },
+  select: {
+    selectLabel: string;
+    name: string;
+    handleChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+    options: string[];
+    selectedItem: string;
+  }
+}
 
-export type AppProps = {
+export type SelectProps = Pick<ArticleFilterProps, 'select'>
+
+export type DatePickerProps = Pick<ArticleFilterProps, 'datePicker'>
+
+export type CardProps = {
   title: string;
   content: string;
   imageUrl: string;
-  link: string;
-  date: string;
-  searchLabel: string;
+  source?: string;
 }
-
-export type ArticleFilerProps = {
-  selectLabel?: string;
-  name: string;
-  handleChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  options: string[];
-  selectedItem?: string;
-  label: string;
-  handleDateChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  selectedDate: string
-}
-
-export type CardProps = Pick<AppProps, 'title' | 'content' | 'imageUrl'>
 
 export type ArticleCardListProps = {
   articles: Array<CardProps>
 }
 
-export type NavBarProps = Pick<AppProps, 'title' | 'link'>
+export type NavBarProps = {
+  title: string;
+  link: string;
+}
 
-export type SearchBarProps = Pick<AppProps, 'searchLabel'>
-
-export type SelectProps = Pick<ArticleFilerProps, 'selectLabel' | 'name' | 'handleChange' | 'options' | 'selectedItem'>
+export type SearchBarProps = {
+  searchLabel: string;
+}
 
 export type MultiSelectProps = {
   options: string[];
@@ -37,8 +43,6 @@ export type MultiSelectProps = {
   handleToggleOption: (option: never) => void;
   label: string
 }
-
-export type DatePickerProps = Pick<ArticleFilerProps, 'label' | 'handleDateChange' | 'selectedDate'>
 
 export type ModalProps = {
   subtitle: string;

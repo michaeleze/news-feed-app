@@ -27,15 +27,17 @@ const Filters: React.FC = () => {
 
   return (
     <div className="flex md:flex-row flex-col gap-6">
-      <DatePicker label="Date" handleDateChange={handleDateChange} selectedDate={selectedDate} />
+      <DatePicker datePicker={{ label: 'Date', handleDateChange, selectedDate }} />
       {SELECTOR_ATTR.map((selector, index) => (
         <Select
           key={index}
-          selectLabel={selector.label}
-          name={selector.name}
-          handleChange={handleChange}
-          options={selector.options}
-          selectedItem={selectedItem[selector.name]}
+          select={{
+            selectLabel: selector.label,
+            name: selector.name,
+            handleChange,
+            options: selector.options,
+            selectedItem: selectedItem[selector.name]
+          }}
         />
       ))
       }

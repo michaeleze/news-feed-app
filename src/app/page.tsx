@@ -1,8 +1,16 @@
 import ArticleCardList from '@/components/ArticleCardList/ArticleCardList';
-import NavBar from '@/components/NavBar/NavBar';
-import SearchAndFilter from '@/components/SearchBarWithFilters/SearchBarWithFilters';
 import { NAVBAR_ATTR } from '@/constants';
 import { mockArticleData } from '@/mock';
+import dynamic from 'next/dynamic';
+
+const SearchAndFilter = dynamic(() => import('@/components/SearchBarWithFilters/SearchBarWithFilters'), {
+  loading: () => <p>Loading...</p>,
+})
+
+const NavBar = dynamic(() => import('@/components/NavBar/NavBar'), {
+  loading: () => <p>Loading...</p>,
+})
+
 
 export default function Home() {
   return (

@@ -15,7 +15,6 @@ const fetchAllNews = async () => {
 
   const requests = [
     fetchNewsFromAPI(newsAPIUrl, { apiKey, country: 'us' }),
-    fetchNewsFromAPI(newsCredUrl, { apiKey, keywords: 'technology' }),
     fetchNewsFromAPI(guardianUrl, {apiKey }),
     fetchNewsFromAPI(newYorkTimesUrl, {apiKey }),
     fetchNewsFromAPI(bbcNewsUrl, {apiKey, country: 'gb' }),
