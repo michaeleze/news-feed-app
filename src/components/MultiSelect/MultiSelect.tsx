@@ -17,7 +17,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
           <div
             key={index}
             className={`cursor-pointer px-4 py-2 ${selectedOptions.includes(option) ? 'bg-blue-500 text-white' : 'bg-white text-gray-700'} hover:bg-blue-500 hover:text-white`}
-            onClick={() => handleToggleOption(option)}
+            onClick={() => handleToggleOption(option as never)}
           >
             {option}
           </div>
