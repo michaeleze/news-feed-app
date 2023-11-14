@@ -1,8 +1,7 @@
-import { SEARCH_LABEL } from '@/constants';
 import { SearchBarProps } from '@/types/index';
 import React from 'react';
 
-const SearchBar: React.FC<SearchBarProps> = ({searchLabel = SEARCH_LABEL}) => (
+const SearchBar: React.FC<SearchBarProps> = ({searchLabel}) => (
   <div className="form-control">
     <label className="label">
       <span className="label-text">{searchLabel}</span>

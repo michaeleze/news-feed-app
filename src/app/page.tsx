@@ -1,8 +1,8 @@
 import ArticleCardList from '@/components/ArticleCardList/ArticleCardList';
 import NavBar from '@/components/NavBar/NavBar';
-import SearchAndFilter from '@/components/SearchAndFilter/SearchAndFilter';
+import SearchAndFilter from '@/components/SearchBarWithFilters/SearchBarWithFilters';
 import { NAVBAR_ATTR } from '@/constants';
-import { mockArticleData } from '@/mock/feeds';
+import { mockArticleData } from '@/mock';
 
 export default function Home() {
   return (

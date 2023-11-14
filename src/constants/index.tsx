@@ -1,6 +1,6 @@
 export const NAVBAR_ATTR = {
   title: "News Feed",
-  link: "Home",
+  link: "Personalize Feed",
 };
 
 export const SEARCH_LABEL = "Search";

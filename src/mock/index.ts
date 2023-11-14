@@ -14,3 +14,9 @@ export const mockArticleData = [{
         imageUrl: "https://example.com/image3.jpg",
     }
 ];
+
+export const categories = ['Technology', 'Health', 'Business', 'Entertainment', 'Sports'];
+
+export const sources = ['BBC', 'CNN', 'Reuters', 'The New York Times', 'The Guardian'];
+
+export const authors = ['Author 1', 'Author 2', 'Author 3', 'Author 4', 'Author 5'];
