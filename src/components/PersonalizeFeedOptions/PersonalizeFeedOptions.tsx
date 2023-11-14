@@ -1,24 +1,28 @@
 import { authors, categories, sources } from '@/mock';
-import React, { useState } from 'react';
-import MultiSelect from '@/components/MultiSelect/MultiSelect';
+import React, { useCallback, useState } from 'react';
+import dynamic from 'next/dynamic';
+
+const MultiSelect = dynamic(() => import('@/components/MultiSelect/MultiSelect'), {
+  loading: () => <p>Loading...</p>
+})
 
 const PersonalizeNewsFeedOptions: React.FC = () => {
   // TODO replace useState with a context API
   const [selectedOptions, setSelectedOptions] = useState([]);
 
-  const toggleOption = (option: never) => {
+  const toggleOption = useCallback((option: never) => {
     if (selectedOptions.includes(option)) {
       setSelectedOptions(selectedOptions.filter((SelectedOption) => SelectedOption !== option));
     } else {
       setSelectedOptions([...selectedOptions, option]);
     }
-  };
+  }, [selectedOptions]);
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = useCallback((event: React.FormEvent) => {
     event.preventDefault();
     // Handle the submission logic here
     console.log('Selected Sources:', selectedSources);
-  };
+  }, []);
 
   const SELECT_FEED_ATTR = [
     { label: 'Category', name: 'category', options: categories },

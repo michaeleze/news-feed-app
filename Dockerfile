@@ -1,5 +1,11 @@
+# Builder Context: Install dependencies (only when needed)
+FROM node:16-alpine AS builder
+
 # Copy package.json and package-lock.json
 COPY package*.json ./
+
+# set node environment
+ENV NODE_ENV production
 
 # Install dependencies
 RUN npm install
@@ -13,8 +19,8 @@ RUN npm run build
 # Stage 2: Serve the application
 FROM nginx:stable-alpine
 
-# Copy the build output to replace the default nginx contents.
-COPY --from=build /app/build /usr/share/nginx/html
-
 # Expose port 80
 EXPOSE 80
+
+# Start application
+CMD ["npm", "start"]

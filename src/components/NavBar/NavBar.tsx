@@ -1,6 +1,8 @@
 "use client"
 import { NavBarProps } from '@/types/index';
-import Modal from '@/components/Modal/Modal';
+import dynamic from 'next/dynamic';
+
+const Modal = dynamic(() => import('@/components/Modal/Modal'))
 
 const NavBar: React.FC<NavBarProps> = ({ title, link }) => {
   const showModal = () => {

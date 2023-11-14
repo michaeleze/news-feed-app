@@ -35,6 +35,12 @@ Start the development server:
 ```
 npm run dev
 ```
+
+For faster dev server using turbo
+
+```
+npm run dev --turbo
+```
 After running the above command, the application should be live at http://localhost:3000.
 
 ### Running with Docker

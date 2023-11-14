@@ -1,8 +1,12 @@
 import { ArticleCardListProps } from '@/types/index';
-import Card from "@/components/Card/Card";
+import dynamic from 'next/dynamic';
+
+const Card = dynamic(() => import('@/components/Card/Card'), {
+  loading: () => <p>Loading...</p>,
+})
 
 const ArticleCardList: React.FC<ArticleCardListProps> = ({ articles }) => (
-  <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-20'>
+  <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 py-20'>
     {articles?.map((item) => (
       <Card {...item} key={item?.title}/>
     )
