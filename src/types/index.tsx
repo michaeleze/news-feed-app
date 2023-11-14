@@ -19,10 +19,10 @@ export type ArticleFilerProps = {
   selectedDate: string
 }
 
-export type ArticleCardProps = Pick<AppProps, 'title' | 'content' | 'imageUrl'>
+export type CardProps = Pick<AppProps, 'title' | 'content' | 'imageUrl'>
 
 export type ArticleCardListProps = {
-  listItems: Array<ArticleCardProps>
+  articles: Array<CardProps>
 }
 
 export type NavBarProps = Pick<AppProps, 'title' | 'link'>

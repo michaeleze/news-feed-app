@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { ArticleCardProps } from '@/types/index';
+import { CardProps } from '@/types/index';
 
-const ArticleCard: React.FC<ArticleCardProps> = ({ title, content, imageUrl }) => {
+const Card: React.FC<CardProps> = ({ title, content, imageUrl }) => {
   return (
     <div className="card card-compact bg-base-100 shadow-xl w-96">
       <figure><Image src={imageUrl} alt="Article" width={100} height={100}/></figure>
@@ -13,4 +13,4 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ title, content, imageUrl }) =
   );
 };
 
-export default ArticleCard;
+export default Card;
