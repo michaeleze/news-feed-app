@@ -37,6 +37,23 @@ npm run dev
 ```
 After running the above command, the application should be live at http://localhost:3000.
 
+### Running with Docker
+To run the News Feed App using Docker, follow these steps:
+
+Build the Docker Image
+
+```
+docker build -t news-feed-app .
+```
+This command builds the Docker image for the app, tagging it as news-feed-app.
+
+### Run the Docker Container
+
+```
+docker run -p 80:80 news-feed-app
+```
+This command runs the app in a Docker container, mapping port 80 of the container to port 80 on your host machine. You can access the app at http://localhost.
+
 ### Using the Application
 With the app running, you can:
 
