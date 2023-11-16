@@ -1,5 +1,5 @@
 "use client";
-import { DatePickerProps } from '@/types/index';
+import type { DatePickerProps } from '@/types/index';
 
 const DatePicker: React.FC<DatePickerProps> = ({
   datePicker: {

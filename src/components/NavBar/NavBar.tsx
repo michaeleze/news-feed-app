@@ -1,5 +1,5 @@
 "use client"
-import { NavBarProps } from '@/types/index';
+import type { NavBarProps } from '@/types/index';
 import dynamic from 'next/dynamic';
 
 const Modal = dynamic(() => import('@/components/Modal/Modal'))

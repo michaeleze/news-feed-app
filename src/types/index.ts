@@ -1,5 +1,5 @@
 export type ArticleFilterProps = {
-  datePicker:{
+  datePicker: {
     label: string;
     handleDateChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     selectedDate: string;
@@ -47,3 +47,17 @@ export type MultiSelectProps = {
 export type ModalProps = {
   subtitle: string;
 }
+
+export type fetchNewsFromAPIProps = {
+  url: string,
+  source: string,
+  params: Record<string, string> | URLSearchParams
+}
+
+export type apiClientFunctionProps = (params: fetchNewsFromAPIProps) => Promise<any>;
+
+export type fetchAllNewsParamsProps = Partial<{
+  newApi: { country: string, q: string, from: string},
+  guardianNews: {'country': string, q: string, 'from-date': string},
+  newYorkTimes: { query: string, 'begin_date': string},
+}>;

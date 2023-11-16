@@ -1,4 +1,4 @@
-import { MultiSelectProps } from "@/types/index";
+import type { MultiSelectProps } from "@/types/index";
 
 const MultiSelect: React.FC<MultiSelectProps> = ({
   options,

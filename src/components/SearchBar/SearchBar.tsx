@@ -1,4 +1,4 @@
-import { SearchBarProps } from '@/types/index';
+import type { SearchBarProps } from '@/types/index';
 import React from 'react';
 
 const SearchBar: React.FC<SearchBarProps> = ({searchLabel}) => (

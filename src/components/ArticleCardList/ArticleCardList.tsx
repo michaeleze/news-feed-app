@@ -1,4 +1,4 @@
-import { ArticleCardListProps } from '@/types/index';
+import type { ArticleCardListProps } from '@/types/index';
 import dynamic from 'next/dynamic';
 
 const Card = dynamic(() => import('@/components/Card/Card'))

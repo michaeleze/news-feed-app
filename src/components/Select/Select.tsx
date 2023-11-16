@@ -1,5 +1,5 @@
 "use client";
-import { SelectProps } from '@/types/index';
+import type { SelectProps } from '@/types/index';
 
 const Select: React.FC<SelectProps> = ({
   select: {

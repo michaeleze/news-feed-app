@@ -1,4 +1,4 @@
-import { CardProps } from '@/types/index';
+import type { CardProps } from '@/types/index';
 
 const Card: React.FC<CardProps> = ({ title, content, imageUrl, source }) => {
   return (

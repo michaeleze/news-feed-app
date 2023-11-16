@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { ModalProps } from "@/types/index";
+import type { ModalProps } from "@/types/index";
 
 const PersonalizeNewsFeedOptions = dynamic(() => import('@/components/PersonalizeFeedOptions/PersonalizeFeedOptions'), {
   loading: () => <p>Loading...</p>
