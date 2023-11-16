@@ -1,5 +1,5 @@
-import type { apiClientFunctionProps, fetchAllNewsParamsProps } from "@/types/";
-import { getNewsParams, useFetch } from "@/utility/apiClient";
+import type { apiClientFunctionProps, fetchAllNewsParamsProps, fetchNewsFromAPIProps } from "@/types/";
+import { getNewsParams, useFetch } from "@/utility";
 
 export class NewsService {
   private apiClient: apiClientFunctionProps;
@@ -21,7 +21,7 @@ export class NewsService {
    const SOURCES = getNewsParams(params)
 
     // Fetch each news
-   const getNewsSource = SOURCES.map(source => this.apiClient(source))
+   const getNewsSource = SOURCES.map(source => this.fetchSpecificNews(source))
 
    // Resolve all fetch news once
     const results = await Promise.allSettled(getNewsSource);
@@ -34,15 +34,9 @@ export class NewsService {
     return allNews;
   }
 
-  // public async fetchSpecificNews(params: fetchNewsFromAPIProps): Promise<any> {
-  //   return this.apiClient(params);
-  // }
+  public async fetchSpecificNews(params: fetchNewsFromAPIProps): Promise<any> {
+    return this.apiClient(params);
+  }
 }
 
 export const newsService = new NewsService(useFetch);
-
-newsService.fetchAllNews({
-  newApi: { country: 'de', q: '', from:''},
-  guardianNews: {country: 'de', q: '', 'from-date': ''},
-  newYorkTimes: { query: '', 'begin_date': ''},
-});

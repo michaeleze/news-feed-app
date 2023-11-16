@@ -24,7 +24,7 @@ export type CardProps = {
   source?: string;
 }
 
-export type ArticleCardListProps = {
+export type CardListProps = {
   articles: Array<CardProps>
 }
 
@@ -58,6 +58,6 @@ export type apiClientFunctionProps = (params: fetchNewsFromAPIProps) => Promise<
 
 export type fetchAllNewsParamsProps = Partial<{
   newApi: { country: string, q: string, from: string},
-  guardianNews: {'country': string, q: string, 'from-date': string},
+  guardianNews: {country: string, q: string, 'from-date'?: string},
   newYorkTimes: { query: string, 'begin_date': string},
 }>;

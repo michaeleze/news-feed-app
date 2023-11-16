@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import ArticleCardList from '@/components/ArticleCardList/ArticleCardList';
+import ArticleCardList from '@/components/CardList/CardList';
 import { ArticleCardListProps } from '@/types/index';
 import { mockArticleData } from '@/mock';
 
