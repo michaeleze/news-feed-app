@@ -1,5 +1,5 @@
 import NewsSection from '@/components/NewsSection/NewsSection';
-import { NAVBAR_ATTR, NEWSSOURCES, newsSources } from '@/constants';
+import { NAVBAR_ATTR } from '@/constants';
 import { newsService } from '@/service/NewsService';
 import dynamic from 'next/dynamic';
 
