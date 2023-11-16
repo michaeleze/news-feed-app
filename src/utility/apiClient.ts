@@ -1,7 +1,7 @@
 import { GUARDIAN_URL, NEWS_API_URL, NEW_YORK_TIMES_URL } from "@/constants";
 import { fetchAllNewsParamsProps, fetchNewsFromAPIProps } from "@/types/";
 
-export const fetchNewsFromAPI = async (
+export const useFetch = async (
   {
     url,
     source,
@@ -18,8 +18,8 @@ export const fetchNewsFromAPI = async (
   }
 };
 
-// APIKEYs should be stored in .env
-export const getNewsSources = (params: fetchAllNewsParamsProps) => [
+// APIKeys should be stored in .env
+export const getNewsParams = (params: fetchAllNewsParamsProps) => [
   {
     source: 'News Api',
     url: NEWS_API_URL,
