@@ -11,16 +11,18 @@ const SearchAndFilter: React.FC<SearchAndFilterProps> = (props) => {
     handleSearch,
     handleSearchNews,
     handlefilterByDate,
-    handlefilterBySource,
-    handlefilterByCategory
+    handleChange,
+    selectedItem,
+    selectedDate,
   } = props
   return (
     <div className="flex md:flex-row flex-col gap-6 w-fit">
-      <SearchBar searchLabel={SEARCH_LABEL} handleSearch={handleSearch}/>
+      <SearchBar searchLabel={SEARCH_LABEL} handleSearch={handleSearch} />
       <Filters
+        handleChange={handleChange}
+        selectedItem={selectedItem}
+        selectedDate={selectedDate}
         handlefilterByDate={handlefilterByDate}
-        handlefilterBySource={handlefilterBySource}
-        handlefilterByCategory={handlefilterByCategory}
       />
       <button className="btn btn-primary place-content-center self-end" onClick={handleSearchNews}>{SEARCH_LABEL}</button>
     </div>

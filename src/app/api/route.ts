@@ -4,9 +4,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET () {
   const data = await newsService.fetchAllNews({
-    newApi: {country: 'us', q: '', from:''},
-    guardianNews: {country: 'us', q: '', 'from-date': ''},
-    newYorkTimes: { query: '', 'begin_date': ''},
+    newApi: {country: 'us', q: '', to:''},
+    guardianNews: {country: 'us', q: '', 'to-date': ''},
+    newYorkTimes: { q: '', 'end_date': ''},
   });
   return  NextResponse.json(data);
 }

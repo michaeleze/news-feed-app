@@ -8,19 +8,16 @@ COPY package*.json ./
 ENV NODE_ENV production
 
 # Install dependencies
-RUN npm install
+RUN yarn
 
 # Copy the rest of your app's source code
 COPY . .
 
 # Build the application
-RUN npm run build
-
-# Stage 2: Serve the application
-FROM nginx:stable-alpine
+RUN yarn build
 
 # Expose port 80
 EXPOSE 80
 
 # Start application
-CMD ["npm", "start"]
+CMD ["yarn", "start"]

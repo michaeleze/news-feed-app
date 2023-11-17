@@ -1,31 +1,25 @@
 export type ArticleFilterProps = {
-  datePicker: {
     label: string;
-    handleDateChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    selectedDate: string;
-  },
-  select: {
-    selectLabel: string;
+    handlefilterByDate: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    selectedDate: string | undefined;
     name: string;
     handleChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
     options: string[];
-    selectedItem: string;
-  }
+    selectedItem: Record<string, string> ;
 }
 
-export type SearchAndFilterProps = {
+export type SearchAndFilterProps = Pick<ArticleFilterProps, 'handlefilterByDate' | 'selectedDate' | 'selectedItem' | 'handleChange'> & {
   handleSearch:  (event: React.ChangeEvent<HTMLInputElement> ) => void;
-  handleSearchNews: () => void;
-  handlefilterByDate: (searchParams: string) => void;
-  handlefilterBySource: (searchParams: string) => void;
-  handlefilterByCategory: (searchParams: string) => void;
+  handleSearchNews?: () => void;
 }
 
 export type FiltersProps = Omit<SearchAndFilterProps, 'handleSearch' | 'handleSearchNews'>
 
-export type SelectProps = Pick<ArticleFilterProps, 'select'>
+export type SelectProps = Omit<ArticleFilterProps, 'handlefilterByDate' | 'selectedDate' | 'label'> & {
+  selectLabel: string;
+}
 
-export type DatePickerProps = Pick<ArticleFilterProps, 'datePicker'>
+export type DatePickerProps = Pick<ArticleFilterProps,'handlefilterByDate' | 'selectedDate' | 'label'>
 
 export type SearchBarProps = Pick<SearchAndFilterProps, 'handleSearch'> & {
   searchLabel: string;
@@ -66,8 +60,8 @@ export type fetchNewsFromAPIProps = {
 
 export type apiClientFunctionProps = (params: fetchNewsFromAPIProps) => Promise<any>;
 
-export type fetchAllNewsParamsProps = Partial<{
-  newApi: { country: string, q: string, from: string},
-  guardianNews: {country: string, q: string, 'from-date'?: string},
-  newYorkTimes: { query: string, 'begin_date': string},
-}>;
+export type fetchAllNewsParamsProps = {
+  newApi: Partial<{ country: string, q: string, to: string}>,
+  guardianNews: Partial<{country: string, q: string, 'to-date'?: string}>,
+  newYorkTimes: Partial<{ q: string, 'end_date': string}>,
+};

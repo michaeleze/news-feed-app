@@ -6,7 +6,7 @@ const Modal = dynamic(() => import('@/components/Modal/Modal'))
 
 const NavBar: React.FC<NavBarProps> = ({ title, link }) => {
   const showModal = () => {
-    const modal = document.getElementById("my_modal_3");
+    const modal = document.getElementById("my_modal_3") as HTMLDialogElement;
     if (modal) {
       modal?.showModal();
     }

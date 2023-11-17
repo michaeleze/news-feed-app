@@ -15,3 +15,5 @@ export const NEWSSOURCES = [
   'New York Times'
 ];
 export const defaultImage = 'https://images.unsplash.com/photo-1579353977828-2a4eab540b9a?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
+export const NO_DATA = "No Data Found"

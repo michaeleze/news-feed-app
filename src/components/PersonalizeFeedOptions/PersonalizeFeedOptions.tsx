@@ -7,7 +7,6 @@ const MultiSelect = dynamic(() => import('@/components/MultiSelect/MultiSelect')
 })
 
 const PersonalizeNewsFeedOptions: React.FC = () => {
-  // TODO replace useState with a context API
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const toggleOption = useCallback((option: never) => {
@@ -21,7 +20,7 @@ const PersonalizeNewsFeedOptions: React.FC = () => {
   const handleSubmit = useCallback((event: React.FormEvent) => {
     event.preventDefault();
     // Handle the submission logic here
-    console.log('Selected Sources:', selectedSources);
+    // console.log('Selected Sources:', selectedSources);
   }, []);
 
   const SELECT_FEED_ATTR = [

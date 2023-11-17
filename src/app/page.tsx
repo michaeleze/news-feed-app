@@ -4,7 +4,7 @@ import { newsService } from '@/service/NewsService';
 import dynamic from 'next/dynamic';
 import { useEffect, useState, useCallback } from 'react';
 
-const SearchAndFilter = dynamic(() => import('@/components/SearchBarWithFilters/SearchBarWithFilters'), {
+const SearchAndFilter = dynamic(() => import('@/components/SearchBarAndFilters/SearchBarWithFilters'), {
   loading: () => <p>Loading...</p>,
 })
 
@@ -18,16 +18,16 @@ const NewsSection = dynamic(() => import('@/components/NewsSection/NewsSection')
 
 export default function Home() {
   const [state, setState] = useState<Array<any>>([]);
-  const [searchParams, setSearchParams] = useState('');
+  const [selectedItem, setSelectedItem] = useState<Record<string, string>>({});
+  const [selectedDate, setSelectedDate] = useState<string | undefined >('');
 
-// Fetch initial news on page load
+  // Fetch initial news on page load
   useEffect(() => {
-    console.log('effect here');
     (async () => {
       const newsStream = await newsService.fetchAllNews({
-        newApi: { country: 'us', q: '', from: '' },
+        newApi: { country: 'us', q: '', to: '' },
         guardianNews: { country: 'us', q: '' },
-        newYorkTimes: { query: '', 'begin_date': '' },
+        newYorkTimes: { q: '', 'end_date': '' },
       });
 
       setState(newsStream);
@@ -35,50 +35,52 @@ export default function Home() {
   }, []);
 
   const handleSearch = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const searchParams = event.target.value;
-    setSearchParams(searchParams);
+    const newsStream = await newsService.fetchAllNews({
+      newApi: { country: 'us', q: event.target.value, to: '' },
+      guardianNews: { country: 'us', q: event.target.value },
+      newYorkTimes: { q: event.target.value, 'end_date': '' },
+    });
+    setState(newsStream);
   }
 
   const handleSearchNews = async () => {
+   // TODO fix filtering
     const newsStream = await newsService.fetchAllNews({
-      newApi: { country: 'us', q: searchParams, from: '' },
-      guardianNews: { country: 'us', q: searchParams },
-      newYorkTimes: { query: searchParams, 'begin_date': '' },
+      newApi: { country: 'us', q: selectedItem.source, to: selectedDate },
+      guardianNews: { country: 'us', q: selectedItem.source, 'to-date': selectedDate },
+      newYorkTimes: { q: selectedItem.source, 'end_date': selectedDate },
     });
+
     setState(newsStream);
   }
 
-  const handlefilterByDate = async (searchParams: string) => {
-    const newsStream = await newsService.fetchAllNews({
-      newApi: { country: 'us', q: searchParams, from: '' },
-      guardianNews: { country: 'us', q: searchParams },
-      newYorkTimes: { query: searchParams, 'begin_date': '' },
-    });
-    setState(newsStream);
-  }
+  const handlefilterByDate = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!event.target.value && event.target.value === '') {
+      return
+    }
 
-  const handlefilterBySource = async (searchParams: string) => {
-    const newsStream = await newsService.fetchAllNews({
-      newApi: { country: 'us', q: searchParams, from: '' },
-      guardianNews: { country: 'us', q: searchParams },
-      newYorkTimes: { query: searchParams, 'begin_date': '' },
-    });
-  }
+      setSelectedDate(event.target.value);
 
-  const handlefilterByCategory = async (searchParams: string) => {
-    const newsStream = await newsService.fetchAllNews({
-      newApi: { country: 'us', q: searchParams, from: '' },
-      guardianNews: { country: 'us', q: searchParams },
-      newYorkTimes: { query: searchParams, 'begin_date': '' },
-    });
-  }
+      const newsStream = await newsService.fetchAllNews({
+        newApi: { country: 'us', q: event.target.value, to: event.target.value },
+        guardianNews: { country: 'us', q: event.target.value, 'to-date': event.target.value },
+        newYorkTimes: { q: event.target.value, 'end_date': event.target.value },
+      });
+
+      setState(newsStream);
+  },[selectedDate]);
+
+  const handleChange = useCallback(async (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedItem({...selectedItem, [event.target.name ]: event.target.value });
+  }, [selectedItem])
 
   const searchFunctions = {
     handleSearch,
     handleSearchNews,
     handlefilterByDate,
-    handlefilterBySource,
-    handlefilterByCategory
+    handleChange,
+    selectedItem,
+    selectedDate,
   }
 
   return (
