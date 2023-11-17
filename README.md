@@ -67,6 +67,12 @@ Browse the latest news from various sources.
 Use the search functionality to find specific news articles.
 Apply filters to narrow down the news articles based on categories, sources, and dates.
 
+### Pitfalls in Using the Application
+
+- The filtering logic for source and category isn't fully functional as well as the personalize newsfeed due to limited time.
+- No test added due to limited time
+
+
 ### Contributing
 
 Contributions to the News Feed App are welcome! If you have suggestions or improvements, please fork the repository and create a pull request.
