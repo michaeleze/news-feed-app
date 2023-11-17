@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import { getArticles } from '@/utility';
+import { memo } from 'react';
 
 const CardList = dynamic(() => import('@/components/CardList/CardList'))
 
@@ -15,4 +16,4 @@ const NewsSection: React.FC<{ source: string, results: any }> = ({ source, resul
   )
 };
 
-export default NewsSection;
+export default memo(NewsSection);

@@ -2,12 +2,17 @@
 import React, { useCallback, useState } from 'react';
 import { categories, sources } from '@/mock';
 import dynamic from 'next/dynamic';
+import { FiltersProps } from '@/types/';
 
 const Select = dynamic(() => import('@/components/Select/Select'))
 
 const DatePicker = dynamic(() => import('@/components/DatePicker/DatePicker'))
 
-const Filters: React.FC = () => {
+const Filters: React.FC<FiltersProps> = ({
+  handlefilterByDate,
+  handlefilterBySource,
+  handlefilterByCategory
+}) => {
   // TODO Replace useState with a context API
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedItem, setSelectedItem] = useState<{ [x: string]: string }>({});

@@ -13,9 +13,23 @@ export type ArticleFilterProps = {
   }
 }
 
+export type SearchAndFilterProps = {
+  handleSearch:  (event: React.ChangeEvent<HTMLInputElement> ) => void;
+  handleSearchNews: () => void;
+  handlefilterByDate: (searchParams: string) => void;
+  handlefilterBySource: (searchParams: string) => void;
+  handlefilterByCategory: (searchParams: string) => void;
+}
+
+export type FiltersProps = Omit<SearchAndFilterProps, 'handleSearch' | 'handleSearchNews'>
+
 export type SelectProps = Pick<ArticleFilterProps, 'select'>
 
 export type DatePickerProps = Pick<ArticleFilterProps, 'datePicker'>
+
+export type SearchBarProps = Pick<SearchAndFilterProps, 'handleSearch'> & {
+  searchLabel: string;
+}
 
 export type CardProps = {
   title: string;
@@ -31,10 +45,6 @@ export type CardListProps = {
 export type NavBarProps = {
   title: string;
   link: string;
-}
-
-export type SearchBarProps = {
-  searchLabel: string;
 }
 
 export type MultiSelectProps = {

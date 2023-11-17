@@ -1,4 +1,5 @@
 import { GUARDIAN_URL, NEWS_API_URL, NEW_YORK_TIMES_URL, defaultImage } from "@/constants";
+import { newsService } from "@/service/NewsService";
 import { fetchAllNewsParamsProps, fetchNewsFromAPIProps } from "@/types/";
 
 export const useFetch = async (
