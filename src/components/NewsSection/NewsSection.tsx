@@ -12,7 +12,7 @@ const NewsSection: React.FC<{ source: string, results: any }> = ({ source, resul
   return (
     <>
       <p>{source}</p>
-      {articles.length > 0 ? <CardList articles={articles} key={results?.slug_name} /> : <p>{NO_DATA}</p>}
+      {articles?.length > 0 ? <CardList articles={articles} key={results?.slug_name} /> : <p>{NO_DATA}</p>}
     </>
   )
 };
